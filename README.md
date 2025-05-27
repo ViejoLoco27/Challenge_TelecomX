@@ -18,6 +18,8 @@ Columnas: 12
 |1|0|9|1|1|0|0|0|0|0|0|1|59\.9|
 |2|1|4|1|0|1|0|0|1|0|0|0|73\.9|
 
+![Image](https://github.com/user-attachments/assets/ec12a242-5ef1-41e4-9e90-1417e52700ec)
+
 Estadísticos de Telecom_servicios
 |index|pago\_mensual|
 |---|---|
@@ -39,6 +41,8 @@ Estadísticos de Telecom_servicios
 |2|1|4|1|0|1|0|0|1|0|0|0|73\.9|3|
 |3|1|13|1|0|1|0|1|1|0|1|1|98\.0|6|
 |4|1|3|1|0|1|0|0|0|1|1|0|83\.9|4|
+
+![Image](https://github.com/user-attachments/assets/081e5f84-e158-4892-8a9a-21e4d548fdf9)
 
 Estratificación por consumo
 Se tomó como referencia la suma de los valores de las columnas de todos los servicios de cada cliente. 
@@ -65,6 +69,8 @@ Estratificación aplicada a la categoría permanencia
 |bajo|13\.77|19281|12\.07|62\.42|
 |medio|33\.78|81038|50\.73|84\.2|
 |alto|57\.51|59411|37\.19|102\.3|
+
+![Image](https://github.com/user-attachments/assets/55919e94-5fa6-419f-9dc7-a7796f61455e)
 
 Estratificación aplicada a la categoría cancelación
 |consumo\_cliente|total_cancelaciones|porcentaje\_cancelacion|gasto\_mensual|
