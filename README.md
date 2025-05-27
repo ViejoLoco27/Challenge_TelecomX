@@ -1,5 +1,3 @@
-# Challenge_TelecomX
-
 Descripción de los datos TelecomX_Data:
 Filas: 7,267
 Columnas: 21
@@ -60,11 +58,17 @@ Resultados de la estratificación por nivel de consumo
 
 ![Image](https://github.com/user-attachments/assets/f31e8489-21c3-4f7b-b21f-c76d16403770)
 
-
-Estratificación aplicada a otras categorías
+Estratificación aplicada a la categoría permanencia
 
 |consumo\_cliente|permanencia\_promedio|total\_meses\_permanencia|ponderacion\_permanencia|gasto\_mensual\_promedio|
 |---|---|---|---|---|
 |bajo|13\.77|19281|12\.07|62\.42|
 |medio|33\.78|81038|50\.73|84\.2|
 |alto|57\.51|59411|37\.19|102\.3|
+
+Estratificación aplicada a la categoría cancelación
+|consumo\_cliente|total_cancelaciones|porcentaje\_cancelacion|gasto\_mensual|
+|---|---|---|---|
+|bajo|604|38\.08|66\.02|
+|medio|783|49\.37|88\.9|
+|alto|199|12\.55|105\.33|
