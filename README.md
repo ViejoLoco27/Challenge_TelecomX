@@ -60,9 +60,13 @@ Resultados de la estratificación por nivel de consumo
 |bajo|1400|
 |alto|1033|
 
-![Image](https://github.com/user-attachments/assets/f31e8489-21c3-4f7b-b21f-c76d16403770)
+![Image](https://github.com/user-attachments/assets/45b31924-fe61-40d7-bbd1-6215df0c1bc9)
 
 Estratificación aplicada a la categoría permanencia
+
+![Image](https://github.com/user-attachments/assets/28743118-276a-4279-bbff-ee41cc35608c)
+
+![Image](https://github.com/user-attachments/assets/7183e1ce-9e06-4632-848b-761582ba4c7b)
 
 |consumo\_cliente|permanencia\_promedio|total\_meses\_permanencia|ponderacion\_permanencia|gasto\_mensual\_promedio|
 |---|---|---|---|---|
@@ -70,7 +74,7 @@ Estratificación aplicada a la categoría permanencia
 |medio|33\.78|81038|50\.73|84\.2|
 |alto|57\.51|59411|37\.19|102\.3|
 
-![Image](https://github.com/user-attachments/assets/55919e94-5fa6-419f-9dc7-a7796f61455e)
+
 
 Estratificación aplicada a la categoría cancelación
 |consumo\_cliente|total_cancelaciones|porcentaje\_cancelacion|gasto\_mensual|
@@ -78,3 +82,8 @@ Estratificación aplicada a la categoría cancelación
 |bajo|604|38\.08|66\.02|
 |medio|783|49\.37|88\.9|
 |alto|199|12\.55|105\.33|
+
+![Image](https://github.com/user-attachments/assets/0ddfc64b-1259-49ed-9a54-3d47b83e29e2)
+
+
+![Image](https://github.com/user-attachments/assets/43de7983-00b8-4066-8435-a3a44673acac)
