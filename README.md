@@ -139,12 +139,12 @@ datos_servicios.drop(['customer_id','gender','senior_citizen','partner',
 |max|118\.75|
 
 ### **📊2. Análisis gráfico** 
-![Image](https://github.com/user-attachments/assets/ec12a242-5ef1-41e4-9e90-1417e52700ec)
+![Image](https://github.com/user-attachments/assets/ef68bc75-b5c3-4902-91eb-f16fe3f166b0)
 
 
 
-
-![Image](https://github.com/user-attachments/assets/081e5f84-e158-4892-8a9a-21e4d548fdf9)
+Dist Subsc
+![Image](https://github.com/user-attachments/assets/d5b84e6a-e214-4867-ad3b-74c32886d8f0)
 
 Estratificación por consumo
 Se tomó como referencia la suma de los valores de las columnas de todos los servicios de cada cliente. 
@@ -162,7 +162,8 @@ Resultados de la estratificación por nivel de consumo
 |bajo|1400|
 |alto|1033|
 
-![Image](https://github.com/user-attachments/assets/45b31924-fe61-40d7-bbd1-6215df0c1bc9)
+Permanencia por consumo servicios
+![Image](https://github.com/user-attachments/assets/7a4cee9e-ff5e-4741-a1ba-653648c7f45d)
 
 Estratificación aplicada a la categoría permanencia
 
@@ -172,8 +173,8 @@ Estratificación aplicada a la categoría permanencia
 |medio|33\.78|81038|50\.73|84\.2|
 |alto|57\.51|59411|37\.19|102\.3|
 
-
-![Image](https://github.com/user-attachments/assets/28743118-276a-4279-bbff-ee41cc35608c)
+Gasto mensual por consumo de servicios
+![Image](https://github.com/user-attachments/assets/7eac6c50-30a7-417a-a5e4-d5c9261d7d57)
 
 ![Image](https://github.com/user-attachments/assets/7183e1ce-9e06-4632-848b-761582ba4c7b)
 
@@ -187,7 +188,8 @@ Estratificación aplicada a la categoría cancelación
 |medio|783|49\.37|88\.9|
 |alto|199|12\.55|105\.33|
 
-![Image](https://github.com/user-attachments/assets/0ddfc64b-1259-49ed-9a54-3d47b83e29e2)
+Gasto mensual de los usuarios que cancelaron por tipo de consumo
+![Image](https://github.com/user-attachments/assets/75c465d2-b3a2-47bf-ae03-aeb3cfe9d153)
 
 
 ![Image](https://github.com/user-attachments/assets/43de7983-00b8-4066-8435-a3a44673acac)
@@ -198,4 +200,3 @@ Estratificación aplicada a la categoría cancelación
 #### [**Insertar código**]
 
 
-![Image](https://github.com/user-attachments/assets/43de7983-00b8-4066-8435-a3a44673acac)
