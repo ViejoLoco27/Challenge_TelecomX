@@ -19,7 +19,7 @@ Al inicio del proyecto, la empresa entregó una base de datos con distintas desc
 |1|0003-MKNFE|No|\{'gender': 'Male', 'SeniorCitizen': 0, 'Partner': 'No', 'Dependents': 'No', 'tenure': 9\}|\{'PhoneService': 'Yes', 'MultipleLines': 'Yes'\}|\{'InternetService': 'DSL', 'OnlineSecurity': 'No', 'OnlineBackup': 'No', 'DeviceProtection': 'No', 'TechSupport': 'No', 'StreamingTV': 'No', 'StreamingMovies': 'Yes'\}|\{'Contract': 'Month-to-month', 'PaperlessBilling': 'No', 'PaymentMethod': 'Mailed check', 'Charges': \{'Monthly': 59\.9, 'Total': '542\.4'\}\}|
 |2|0004-TLHLJ|Yes|\{'gender': 'Male', 'SeniorCitizen': 0, 'Partner': 'No', 'Dependents': 'No', 'tenure': 4\}|\{'PhoneService': 'Yes', 'MultipleLines': 'No'\}|\{'InternetService': 'Fiber optic', 'OnlineSecurity': 'No', 'OnlineBackup': 'No', 'DeviceProtection': 'Yes', 'TechSupport': 'No', 'StreamingTV': 'No', 'StreamingMovies': 'No'\}|\{'Contract': 'Month-to-month', 'PaperlessBilling': 'Yes', 'PaymentMethod': 'Electronic check', 'Charges': \{'Monthly': 73\.9, 'Total': '280\.85'\}\}|
 
-### 📅Tabla normalizada de datos
+### 🪧Tabla normalizada de datos
 ```
 #Script para normalizar columna por columna
 data_nomalized = pd.concat([pd.json_normalize(datos['customer']), pd.json_normalize(datos['phone']), pd.json_normalize(datos['internet']), pd.json_normalize(datos['account'])], axis=1)
@@ -109,7 +109,7 @@ datos_servicios.drop(['customer_id','gender','senior_citizen','partner',
  
  Al término de la limpieza y transformación de datos, se obtuvo el siguiente DataFrame.
 
-### 📅Tabla Telecom_servicios
+### 🪧Tabla Telecom_servicios
 
 **Descripción de los datos TelecomX_servicios**
 - **Filas: 4,832** 
@@ -128,7 +128,7 @@ datos_servicios.drop(['customer_id','gender','senior_citizen','partner',
 datos_origen_servicios = datos_origen_servicios.rename(columns={'churn':'cancelacion','tenure':'permanencia_mensual'})
 ```
 - ☑️**Se agregó una nueva columna ['total_servicios'] la cual suma los servicios contratados por usuarios**.
-### 📅Tabla Servicios para la exploración del análisis de datos
+### 🪧Tabla Servicios para la exploración del análisis de datos
 **Descripción de los datos Servicios**
 - **Filas: 4,832** 
 - **Columnas: 13**
