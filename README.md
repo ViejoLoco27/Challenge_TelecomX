@@ -219,6 +219,8 @@ En términos del gasto que realizan los usuarios según su nivel de consumo, se 
 Respecto al gasto mensual de las personas que cancelaron su subscripción no resulta tan distinto a los que decidieron continuar con los servicios provistos por la compañía.
 
 ![Image](https://github.com/user-attachments/assets/75c465d2-b3a2-47bf-ae03-aeb3cfe9d153)
+
 El siguiente gráfico muestra que los usuarios que más abandonaron sus suscripciones, según su perfil de consumo, fueron aquellas que tienen contratados menos de siete servicios.
+
 ![Image](https://github.com/user-attachments/assets/43de7983-00b8-4066-8435-a3a44673acac)
 
