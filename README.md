@@ -123,29 +123,58 @@ datos_servicios.drop(['customer_id','gender','senior_citizen','partner',
 
 ## 🎯Análisis exploratorio de datos
  
-- **Renombrar columnas ['churn'], ['tenure']: ** al inicio del análisis, se encontraron dos columnas que aún tenían nombres no muy asequibles, por lo que se procedió a modificarlos. 
-- 
-- Se realizó 
-### **📊1. Análisis descriptivo de las columnas ... **
+- ☑️**Renombrar columnas ['churn'], ['tenure']: ** al inicio del análisis, se encontraron dos columnas que aún tenían nombres no muy asequibles, por lo que se procedió a modificarlos. 
+```
+datos_origen_servicios = datos_origen_servicios.rename(columns={'churn':'cancelacion','tenure':'permanencia_mensual'})
+```
+- ☑️**Se agregó una nueva columna ['total_servicios'] la cual suma los servicios contratados por usuarios**.
+### 📅Tabla Servicios para la exploración del análisis de datos
+**Descripción de los datos Servicios**
+- **Filas: 4,832** 
+- **Columnas: 13**
+
+|index|cancelacion|permanencia\_mensual|servicio\_telefonico|multiples\_lineas|servicio\_internet|seguridad\_online|servicio\_nube|proteccion\_dispositivos|soporte\_tecnico|tv\_satelital|streaming\_peliculas|pago\_mensual|total\_servicios|
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|0|0|9|1|0|0|0|1|0|1|1|0|65\.6|4|
+|1|0|9|1|1|0|0|0|0|0|0|1|59\.9|3|
+|2|1|4|1|0|1|0|0|1|0|0|0|73\.9|3|
+
+### 📊1. Análisis descriptivo de las columnas ['permanencia_mensual', 'pago_mensual', 'total_servicios']
+- ☑️A partir del nuevo DataFrame se puede obtener información muy valiosa de las medidas de tendencia central, por ello, se aplicó el siguiente script:
+```
+cols=['permanencia_mensual','pago_mensual','total_servicios']
+pd.DataFrame(datos_origen_servicios[cols].describe()).round(2)
+```
+
+|index|permanencia\_mensual|pago\_mensual|total\_servicios|
+|---|---|---|---|
+|count|4832\.0|4832\.0|4832\.0|
+|mean|33\.06|81\.76|4\.79|
+|std|24\.64|18\.31|1\.97|
+|min|1\.0|42\.9|1\.0|
+|25%|9\.0|69\.79|3\.0|
+|50%|30\.0|82\.5|5\.0|
+|75%|56\.0|95\.7|6\.0|
+|max|72\.0|118\.75|9\.0|
 |index|pago\_mensual|
-|---|---|
-|count|4832\.0|
-|mean|81\.76|
-|std|18\.30|
-|min|42\.9|
-|25%|69\.7875|
-|50%|82\.5|
-|75%|95\.7|
-|max|118\.75|
+
+### 📋Observaciones: 
+- ☑️**Mean (media):** en términos del número de meses que llevan los usuarios con el servicio de telecomunicaciones provisto por TelecomX es de un total de 33 meses; respecto al pago mensual promedio es de 81.76 y en promedio los usuarios contratan 4 de los 9 servicios que provee la compañía.
+- ☑️**SDT (Desviación estándar):** en los tres casos se observa que la dispersión de datos es muy diversa, por lo que su comportamiento no es cercano a la media. En efecto, basar un análisis en el valor promedio puede llevarnos a conclusiones erróneas.
 
 ### **📊2. Análisis gráfico** 
+
+☑️El siguiente gráfico tiene por objetivo mostrar la popularidad de los servicios que adquieren los usuarios. Una observación adicional, es que, el servicio telefónico no debería ser un indicador que requiera especial atención ya que para poder contar con los demás servicios se requiere de la suscripción de al menos una línea telefónica.
+
+En términos de popularidad, los servicios de internet, líneas múltiples, streaming de películas y tv satelital, son los cuatro principales. Esto podría dar lugar a múltiples estrategias que busquen dar a conocer los otros cuatro servicios restantes. Podrían darse paquetes armados con periodos de prueba. Periodos de prueba atractivos. 
+
 ![Image](https://github.com/user-attachments/assets/ef68bc75-b5c3-4902-91eb-f16fe3f166b0)
 
-
-
-Dist Subsc
+☑️La pregunta que abre el estudio es ¿por qué los suscriptores están abandonando sus subscripciones? Por ello, partimos de la pregunta ¿cuántos usuarios abandonaron su subscripción? 
+De acuerdo con la información obtenida, se observa que 1586 de los 4832 subscriptores dieron por cancelada la subscripción.
 ![Image](https://github.com/user-attachments/assets/d5b84e6a-e214-4867-ad3b-74c32886d8f0)
 
+☑️Un paso adicional que se dio durante el análisis de datos fue la estratificación de datos por el nivel de consumo. Esto se llevó a cabo para simplificar la lectura de los datos. En lo que resta del análisis se empleó este método para obtener información del DataFrame.
 Estratificación por consumo
 Se tomó como referencia la suma de los valores de las columnas de todos los servicios de cada cliente. 
 
@@ -155,14 +184,15 @@ Se tomó como referencia la suma de los valores de las columnas de todos los ser
 |Medio| 4=< total_servicios >=6|
 |Alto| 7=< total_servicios >=9|
 
-Resultados de la estratificación por nivel de consumo
-|consumo\_cliente|total_clientes|
-|---|---|
-|medio|2399|
-|bajo|1400|
-|alto|1033|
+```
+estratos = [0,3,6,9]  # Estratos: <=3, 4-6, 7-9
 
-Permanencia por consumo servicios
+etiquetas = ['bajo','medio','alto']  # Etiquetas
+
+servicios['consumo_cliente'] = pd.cut(servicios['total_servicios'], bins=estratos, labels=etiquetas)#pd.cut -> asigna la categoría correspondiente a cada columna
+```
+En su mayoría, los usuarios han contrato de entre cuatro a seis servicios de la compañía. Por otro lado, son sólo 1033 usuarios que cuentan con más de 6 servicios.
+
 ![Image](https://github.com/user-attachments/assets/7a4cee9e-ff5e-4741-a1ba-653648c7f45d)
 
 Estratificación aplicada a la categoría permanencia
@@ -173,13 +203,11 @@ Estratificación aplicada a la categoría permanencia
 |medio|33\.78|81038|50\.73|84\.2|
 |alto|57\.51|59411|37\.19|102\.3|
 
-Gasto mensual por consumo de servicios
-![Image](https://github.com/user-attachments/assets/7eac6c50-30a7-417a-a5e4-d5c9261d7d57)
-
+El 50.7% de las personas que mantuvieron subscripción realiza un consumo medio de los servicios de la compañía. Además, el gráfico siguiente muestra que las personas que tienen un consumo elevado han decidido permanecer con sus servicios.
 ![Image](https://github.com/user-attachments/assets/7183e1ce-9e06-4632-848b-761582ba4c7b)
+En términos del gasto que realizan los usuarios según su nivel de consumo, se observa que las personas con consumo elevado, es decir el 37.2% de las personas que permanecieron con su subscripción gastan en promedio gasta un 39% más que los usuarios de consumo bajo.
 
-
-
+![Image](https://github.com/user-attachments/assets/7eac6c50-30a7-417a-a5e4-d5c9261d7d57)
 
 Estratificación aplicada a la categoría cancelación
 |consumo\_cliente|total_cancelaciones|porcentaje\_cancelacion|gasto\_mensual|
@@ -188,15 +216,9 @@ Estratificación aplicada a la categoría cancelación
 |medio|783|49\.37|88\.9|
 |alto|199|12\.55|105\.33|
 
-Gasto mensual de los usuarios que cancelaron por tipo de consumo
+Respecto al gasto mensual de las personas que cancelaron su subscripción no resulta tan distinto a los que decidieron continuar con los servicios provistos por la compañía.
+
 ![Image](https://github.com/user-attachments/assets/75c465d2-b3a2-47bf-ae03-aeb3cfe9d153)
-
-
+El siguiente gráfico muestra que los usuarios que más abandonaron sus suscripciones, según su perfil de consumo, fueron aquellas que tienen contratados menos de siete servicios.
 ![Image](https://github.com/user-attachments/assets/43de7983-00b8-4066-8435-a3a44673acac)
-
-## 📋**Observaciones**
-
-#### [**insertar tabla**]
-#### [**Insertar código**]
-
 
