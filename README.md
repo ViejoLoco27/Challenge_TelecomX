@@ -1,7 +1,7 @@
 # Informe Final
-#### [**insertar tabla**]
-#### [**Insertar código**]
-## Introducción 
+
+
+## 📋Introducción 
 
 
 ## Instrucciones del Challenge TelecomX
@@ -9,7 +9,7 @@ La empresa Telecom X enfrenta una alta tasa de cancelaciones y necesita comprend
 
 Tu desafío será recopilar, procesar y analizar los datos, utilizando Python y sus principales bibliotecas para extraer información valiosa. A partir de tu análisis, el equipo de Data Science podrá avanzar en modelos predictivos y desarrollar estrategias para reducir la evasión.
 
-## Normalización de datos
+## 🎯Normalización de datos
 
 Al inicio del proyecto, la empresa entregó una base de datos con distintas descripciones de los perfiles de los usuarios. El archivo se encontraba en formato json, por lo que, al importarlo, nos encontramos con columnas anidadas, es decir, columnas que contenían estructuras de datos como listas y diccionarios. En efecto, antes de trabajar la limpieza y transformación de datos, se llevó a cabo la normalización de las columnas anidadas.
 
@@ -19,12 +19,10 @@ Al inicio del proyecto, la empresa entregó una base de datos con distintas desc
 |1|0003-MKNFE|No|\{'gender': 'Male', 'SeniorCitizen': 0, 'Partner': 'No', 'Dependents': 'No', 'tenure': 9\}|\{'PhoneService': 'Yes', 'MultipleLines': 'Yes'\}|\{'InternetService': 'DSL', 'OnlineSecurity': 'No', 'OnlineBackup': 'No', 'DeviceProtection': 'No', 'TechSupport': 'No', 'StreamingTV': 'No', 'StreamingMovies': 'Yes'\}|\{'Contract': 'Month-to-month', 'PaperlessBilling': 'No', 'PaymentMethod': 'Mailed check', 'Charges': \{'Monthly': 59\.9, 'Total': '542\.4'\}\}|
 |2|0004-TLHLJ|Yes|\{'gender': 'Male', 'SeniorCitizen': 0, 'Partner': 'No', 'Dependents': 'No', 'tenure': 4\}|\{'PhoneService': 'Yes', 'MultipleLines': 'No'\}|\{'InternetService': 'Fiber optic', 'OnlineSecurity': 'No', 'OnlineBackup': 'No', 'DeviceProtection': 'Yes', 'TechSupport': 'No', 'StreamingTV': 'No', 'StreamingMovies': 'No'\}|\{'Contract': 'Month-to-month', 'PaperlessBilling': 'Yes', 'PaymentMethod': 'Electronic check', 'Charges': \{'Monthly': 73\.9, 'Total': '280\.85'\}\}|
 
-### Tabla normalizada de datos
+### 📅Tabla normalizada de datos
 ```
 #Script para normalizar columna por columna
 data_nomalized = pd.concat([pd.json_normalize(datos['customer']), pd.json_normalize(datos['phone']), pd.json_normalize(datos['internet']), pd.json_normalize(datos['account'])], axis=1)
-
-data_nomalized.head()
 ```
 **Descripción de los datos TelecomX_Data:**
 **Filas: 7,267**
@@ -35,9 +33,9 @@ data_nomalized.head()
 |1|0003-MKNFE|No|Male|0|No|No|9|Yes|Yes|DSL|No|No|No|No|No|Yes|Month-to-month|No|Mailed check|59\.9|
 |2|0004-TLHLJ|Yes|Male|0|No|No|4|Yes|No|Fiber optic|No|No|Yes|No|No|No|Month-to-month|Yes|Electronic check|73\.9|
 
-## Limpieza y tratamiento de datos
+## 🎯Limpieza y tratamiento de datos
 Una vez normalizados los datos, se llevó a cabo la limpieza de datos, procedimiento que consistió en:
-- **Modificar los encabezados de las columnas (primer cambio de encabezados)**
+- ☑️**Modificar los encabezados de las columnas (primer cambio de encabezados)**
  ```
 #Los encabezados compuestos por dos o más plabras deben separarse con un guión bajo.
 datos_normalizados = datos_normalizados.rename(columns={'customerid':'customer_id', 'seniorcitizen':'senior_citizen',
@@ -48,7 +46,7 @@ datos_normalizados = datos_normalizados.rename(columns={'customerid':'customer_i
                                                                'streaming_movies','paperlessbilling':'paperless_billing', 'paymentmethod':'payment_method',
                                                                'charges.monthly':'charges_monthly','charges.total':'charges_total'})
 ```
-- **Mediante consultas se detectaron valores nulos; por lo que, se aplicó el siguiente script para retirar estos valores y categorías que no servirán para el análisis**
+- ☑️**Mediante consultas se detectaron valores nulos; por lo que, se aplicó el siguiente script para retirar estos valores y categorías que no servirán para el análisis**
 ```
 columnas_to_modified = ['online_security','online_backup','device_protection','tech_support','streaming_tv','streaming_movies'] # Nombrando las columnas con valores NaN
 
@@ -68,25 +66,25 @@ datos_normalizados['charges_total']=datos_normalizados['charges_total'].replace(
 
 datos_normalizados= datos_normalizados.dropna() # Eliminar valores NaN
 ```
-- **En la columna ['charges_total'] se cambió el tipo de dato a float64**
+- ☑️**En la columna ['charges_total'] se cambió el tipo de dato a float64**
 ```
 datos_normalizados['charges_total']=datos_normalizados['charges_total'].astype(np.float64) # Transformar 'charges_total' a float64
 ```
-- **Se reinició el índice del DataFrame para que se ajuste con las modificaciones realizadas**
+- ☑️**Se reinició el índice del DataFrame para que se ajuste con las modificaciones realizadas**
 ```
 datos_normalizados.reset_index(drop=True)
 ```
-- **Las columnas con valores 'Yes' 'No' se cambiaron por valores 0, 1** 
+- ☑️**Las columnas con valores 'Yes' 'No' se cambiaron por valores 0, 1** 
 ```
 col_to_change =['churn','partner','dependents','phone_service','multiple_lines','online_backup','device_protection','tech_support','streaming_tv','streaming_movies','paperless_billing']
 
 datos_normalizados[col_to_change] = datos_normalizados[col_to_change].replace({'yes':1,'no':0})
 ```
-- **Los valores de la columna ['internet_service'] 'fiber optic' 'DSL' se cambiaron por valores 0, 1.** El fundamento de este cambio es que el servicio de fibra óptica es considerado como una mejora en el servicio, por lo que hay un mayor número de usuarios que instalan este servicio. 
+- ☑️**Los valores de la columna ['internet_service'] 'fiber optic' 'DSL' se cambiaron por valores 0, 1.** El fundamento de este cambio es que el servicio de fibra óptica es considerado como una mejora en el servicio, por lo que hay un mayor número de usuarios que instalan este servicio. 
 ```
 datos_servicios['internet_service']=datos_servicios['internet_service'].replace({'fiber optic':1,'dsl':0})
 ```
-- **Modificar los encabezados de las columnas (segundo cambio de encabezados)**
+- ☑️**Modificar los encabezados de las columnas (segundo cambio de encabezados)**
 ```
 datos_servicios=datos_servicios.rename(columns={'internet_service':'fibra_optica','phone_service':'servicio_telefonico','multiple_lines':'multiples_lineas',
 
@@ -98,18 +96,21 @@ datos_servicios=datos_servicios.rename(columns={'internet_service':'fibra_optica
 
 })
 ```
-- **Por último, se retiraron columnas que no servirían para el análisis exploratorio de los datos.** El criterio que se aplicó para la depuración de datos se fundamentó en el hecho de que en el DataFrame se sirve de datos que pueden servir para dos tipos distintos de análisis: (análisis por estatus de los usuarios y un análisis por el tipo de servicio que contrataron los usuarios). Para nuestro ejercicio se planteó la posibilidad de explorar ambos casos, pero por cuestiones de tiempo, se procedió por el segundo; por lo que, se retiraron las categorías que hagan referencia al estatus de los usuarios.
+- ☑️**Por último, se retiraron columnas que no servirían para el análisis exploratorio de los datos.** El criterio que se aplicó para la depuración de datos se fundamentó en el hecho de que en el DataFrame se sirve de datos que pueden servir para dos tipos distintos de análisis: (análisis por estatus de los usuarios y un análisis por el tipo de servicio que contrataron los usuarios). Para nuestro ejercicio se planteó la posibilidad de explorar ambos casos, pero por cuestiones de tiempo, se procedió por el segundo; por lo que, se retiraron las categorías que hagan referencia al estatus de los usuarios.
 ```
 datos_servicios.drop(['customer_id','gender','senior_citizen','partner',
 
 'dependents','contract','paperless_billing','payment_method','charges_total','cuentas_diarias'],axis=1,inplace=True)
 ```
- **El notebook Colab concluye con el respaldo.** Anteriormente, se señaló que, las cateogrías del DataFrame original pueden ser útiles para realizar dos tipos de análisis por lo que se guardaron dos archivos para recuperar ambos según se vaya a necesitar en el futuro.
+- ☑️**El notebook Colab concluye con el respaldo.** Anteriormente, se señaló que, las cateogrías del DataFrame original pueden ser útiles para realizar dos tipos de análisis por lo que se guardaron dos archivos para recuperar ambos según se vaya a necesitar en el futuro.
  
  - **TelecomX_estatus_usuarios.json**
  - **TelecomX_servicios.json**
  
- Al termino de la limpieza y transformación de datos, se obtuvo el siguiente DataFrame.
+ Al término de la limpieza y transformación de datos, se obtuvo el siguiente DataFrame.
+
+### 📅Tabla Telecom_servicios
+
 **Descripción de los datos TelecomX_servicios**
 - **Filas: 4,832** 
 - **Columnas: 12**
@@ -120,11 +121,12 @@ datos_servicios.drop(['customer_id','gender','senior_citizen','partner',
 |1|0|9|1|1|0|0|0|0|0|0|1|59\.9|
 |2|1|4|1|0|1|0|0|1|0|0|0|73\.9|
 
-## Análisis exploratorio de datos
+## 🎯Análisis exploratorio de datos
  
-- **Al arranque del análisis, se encontraron dos columnas que aún tenían nombres no muy asequibles, por lo que se procedió a modificarlos. **
+- **Renombrar columnas ['churn'], ['tenure']: ** al inicio del análisis, se encontraron dos columnas que aún tenían nombres no muy asequibles, por lo que se procedió a modificarlos. 
+- 
 - Se realizó 
-### **1. Análisis descriptivo de las columnas ... **
+### **📊1. Análisis descriptivo de las columnas ... **
 |index|pago\_mensual|
 |---|---|
 |count|4832\.0|
@@ -136,7 +138,7 @@ datos_servicios.drop(['customer_id','gender','senior_citizen','partner',
 |75%|95\.7|
 |max|118\.75|
 
-### **2. Análisis gráfico** 
+### **📊2. Análisis gráfico** 
 ![Image](https://github.com/user-attachments/assets/ec12a242-5ef1-41e4-9e90-1417e52700ec)
 
 
@@ -186,6 +188,14 @@ Estratificación aplicada a la categoría cancelación
 |alto|199|12\.55|105\.33|
 
 ![Image](https://github.com/user-attachments/assets/0ddfc64b-1259-49ed-9a54-3d47b83e29e2)
+
+
+![Image](https://github.com/user-attachments/assets/43de7983-00b8-4066-8435-a3a44673acac)
+
+## 📋**Observaciones**
+
+#### [**insertar tabla**]
+#### [**Insertar código**]
 
 
 ![Image](https://github.com/user-attachments/assets/43de7983-00b8-4066-8435-a3a44673acac)
