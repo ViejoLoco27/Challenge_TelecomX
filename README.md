@@ -1,8 +1,8 @@
 # Informe Final
 
-
-## 📋Introducción 
-
+![Static Badge](https://img.shields.io/badge/Oracle_Next_Education-blue?style=plastic&logo=python&logoColor=green&logoSize=auto&label=Alura%20Latam)
+![Static Badge](https://img.shields.io/badge/Proyecto-blue?style=plastic&logo=pandas&logoColor=green&logoSize=auto&label=Pandas%20ETL)
+![Static Badge](https://img.shields.io/badge/Certificado_del_curso-Alura?logo=pandas&color=%231e4181&link=https%3A%2F%2Fapp.aluracursos.com%2Fcertificate%2Fguz27-unameconomia%2Fpandas-transformacion-manipulacion-datos)
 
 ## Instrucciones del Challenge TelecomX
 La empresa Telecom X enfrenta una alta tasa de cancelaciones y necesita comprender los factores que llevan a la pérdida de clientes.
@@ -158,7 +158,6 @@ pd.DataFrame(datos_origen_servicios[cols].describe()).round(2)
 |max|72\.0|118\.75|9\.0|
 |index|pago\_mensual|
 
-### 📋Observaciones: 
 - ☑️**Mean (media):** en términos del número de meses que llevan los usuarios con el servicio de telecomunicaciones provisto por TelecomX es de un total de 33 meses; respecto al pago mensual promedio es de 81.76 y en promedio los usuarios contratan 4 de los 9 servicios que provee la compañía.
 - ☑️**SDT (Desviación estándar):** en los tres casos se observa que la dispersión de datos es muy diversa, por lo que su comportamiento no es cercano a la media. En efecto, basar un análisis en el valor promedio puede llevarnos a conclusiones erróneas.
 
@@ -172,6 +171,7 @@ En términos de popularidad, los servicios de internet, líneas múltiples, stre
 
 ☑️La pregunta que abre el estudio es ¿por qué los suscriptores están abandonando sus subscripciones? Por ello, partimos de la pregunta ¿cuántos usuarios abandonaron su subscripción? 
 De acuerdo con la información obtenida, se observa que 1586 de los 4832 subscriptores dieron por cancelada la subscripción.
+
 ![Image](https://github.com/user-attachments/assets/d5b84e6a-e214-4867-ad3b-74c32886d8f0)
 
 ☑️Un paso adicional que se dio durante el análisis de datos fue la estratificación de datos por el nivel de consumo. Esto se llevó a cabo para simplificar la lectura de los datos. En lo que resta del análisis se empleó este método para obtener información del DataFrame.
@@ -195,7 +195,7 @@ En su mayoría, los usuarios han contrato de entre cuatro a seis servicios de la
 
 ![Image](https://github.com/user-attachments/assets/7a4cee9e-ff5e-4741-a1ba-653648c7f45d)
 
-Estratificación aplicada a la categoría permanencia
+☑️**Estratificación aplicada a la categoría permanencia**
 
 |consumo\_cliente|permanencia\_promedio|total\_meses\_permanencia|ponderacion\_permanencia|gasto\_mensual\_promedio|
 |---|---|---|---|---|
@@ -209,7 +209,7 @@ En términos del gasto que realizan los usuarios según su nivel de consumo, se 
 
 ![Image](https://github.com/user-attachments/assets/7eac6c50-30a7-417a-a5e4-d5c9261d7d57)
 
-Estratificación aplicada a la categoría cancelación
+☑️**Estratificación aplicada a la categoría cancelación**
 |consumo\_cliente|total_cancelaciones|porcentaje\_cancelacion|gasto\_mensual|
 |---|---|---|---|
 |bajo|604|38\.08|66\.02|
