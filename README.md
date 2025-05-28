@@ -64,15 +64,17 @@ Resultados de la estratificación por nivel de consumo
 
 Estratificación aplicada a la categoría permanencia
 
-![Image](https://github.com/user-attachments/assets/28743118-276a-4279-bbff-ee41cc35608c)
-
-![Image](https://github.com/user-attachments/assets/7183e1ce-9e06-4632-848b-761582ba4c7b)
-
 |consumo\_cliente|permanencia\_promedio|total\_meses\_permanencia|ponderacion\_permanencia|gasto\_mensual\_promedio|
 |---|---|---|---|---|
 |bajo|13\.77|19281|12\.07|62\.42|
 |medio|33\.78|81038|50\.73|84\.2|
 |alto|57\.51|59411|37\.19|102\.3|
+
+
+![Image](https://github.com/user-attachments/assets/28743118-276a-4279-bbff-ee41cc35608c)
+
+![Image](https://github.com/user-attachments/assets/7183e1ce-9e06-4632-848b-761582ba4c7b)
+
 
 
 
